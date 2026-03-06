@@ -1,5 +1,6 @@
 const issuesContainer = document.getElementById("issuesContainer");
 const IssueDetailsModal = document.getElementById("Issue_details_modal")
+const totalIssues = document.getElementById("totalIssues")
 
 
 
@@ -12,7 +13,9 @@ async function loadIssues() {
 }
 
 function displayIssues(issues) {
+    let sum = 0;
     issues.forEach((issue) => {
+        sum = sum + 1;
         const card = document.createElement("div")
         card.className = "p-4 space-y-3 border-t-4 border-green-500 rounded-lg"
         if (issue.status === "open") {
@@ -45,6 +48,7 @@ function displayIssues(issues) {
         issuesContainer.appendChild(card);
 
     })
+    totalIssues.innerText = sum;
 }
 
 async function openIssueModal(id) {
@@ -78,7 +82,7 @@ async function openIssueModal(id) {
       <div class="space-y-2">
         <div class="flex justify-between w-8/12">
           <p class="text-black/60">Assignee:</p>
-          <p class="text-black/60">Priority:</p>
+          <p class="text-black/60">Prior</p>
         </div>
 
         <div class="flex justify-between w-8/12">
