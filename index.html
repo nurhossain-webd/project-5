@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login Page</title>
+
+    <!-- daisyUI and Tailwind -->
+    <link href="https://cdn.jsdelivr.net/npm/daisyui@5" rel="stylesheet" type="text/css" />
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+
+</head>
+
+<body>
+    <main class="mx-auto mt-20 w-full max-w-xs space-y-6 text-center">
+        <header class="space-y-3">
+            <img src="assets/github-logo.png" alt="GitHub" class="mx-auto" />
+            <h2 class="text-lg font-bold">GitHub Issues Tracker</h2>
+            <p class="text-sm text-black/60">Sign in to manage your issues</p>
+        </header>
+        <fieldset class="fieldset rounded-box w-full border border-base-300 bg-base-200 p-4 text-left">
+
+            <label class="label">Username</label>
+            <input type="email" class="input w-full" placeholder="Enter Username" />
+            <p class="text-violet-500">Default: admin</p>
+
+            <label class="label">Password</label>
+            <input type="password" class="input w-full" placeholder="Enter Password" />
+            <p class="text-violet-500">Default: admin123</p>
+
+            <button class="btn btn-primary mt-4 w-full">Sign In</button>
+        </fieldset>
+
+        <div class="divider w-full">OR</div>
+
+
+        <section class="space-y-2">
+            <p class="text-sm text-black/60">Demo Credentials:</p>
+            <p><span class="font-bold">Username:</span> admin</p>
+            <p><span class="font-bold">Password:</span> admin123</p>
+        </section>
+    </main>
+</body>
+
+</html>
