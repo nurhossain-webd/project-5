@@ -4,6 +4,7 @@ const totalIssues = document.getElementById("totalIssues")
 
 
 
+
 // load issues from jason
 async function loadIssues() {
     const res = await fetch("https://phi-lab-server.vercel.app/api/v1/lab/issues ")

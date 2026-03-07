@@ -22,14 +22,14 @@
         <fieldset class="fieldset rounded-box w-full border border-base-300 bg-base-200 p-4 text-left">
 
             <label class="label">Username</label>
-            <input type="email" class="input w-full" placeholder="Enter Username" />
+            <input type="email" id="userName" class="input w-full" placeholder="Enter Username" />
             <p class="text-violet-500">Default: admin</p>
 
             <label class="label">Password</label>
-            <input type="password" class="input w-full" placeholder="Enter Password" />
+            <input type="password" id="userPass" class="input w-full" placeholder="Enter Password" />
             <p class="text-violet-500">Default: admin123</p>
 
-            <button class="btn btn-primary mt-4 w-full">Sign In</button>
+            <button id="signBtn" class="btn btn-primary mt-4 w-full">Sign In</button>
         </fieldset>
 
         <div class="divider w-full">OR</div>
@@ -41,6 +41,7 @@
             <p><span class="font-bold">Password:</span> admin123</p>
         </section>
     </main>
+    <script src="login.js"></script>
 </body>
 
 </html>
