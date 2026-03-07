@@ -26,8 +26,13 @@ function displayIssues(issues) {
         }
         card.innerHTML = `
      <div class="flex justify-between">
-                    <img src="assets/Open-Status.png" alt="">
-                    <p class="text-lg">${issue.priority}</p>
+                    <img src="${issue.status === "open" ? "assets/Open-Status.png" : "assets/Closed- Status .png"}" alt="">
+                      <p class="text-lg inline-block px-3 py-1 rounded-full ${issue.priority === "high" ? "bg-red-500/20 text-red-600" :
+                issue.priority === "medium" ? "bg-amber-600/20 text-amber-700" :
+                    "bg-green-500/20 text-green-700"
+            }">
+    ${issue.priority}
+  </p>
                 </div>
                 <h2 class="text-lg font-bold" onclick="openIssueModal(${issue.id})">${issue.title}</h2>
                 <p class="line-clamp-2 text-sm text-black/60">${issue.description}</p>
