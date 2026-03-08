@@ -5,6 +5,25 @@ const allBtn = document.getElementById("allBtn")
 const openBtn = document.getElementById("openBtn")
 const closedBtn = document.getElementById("closedBtn")
 const loadingSpinner = document.getElementById("loadSpinner")
+const searchBtn = document.getElementById("searchBtn")
+const searchBox = document.getElementById("searchBox")
+
+
+async function searchResult(searchText) {
+    const res = await fetch(
+        `https://phi-lab-server.vercel.app/api/v1/lab/issues/search?q=${searchText}`
+    );
+
+    const data = await res.json();
+
+    issuesContainer.innerHTML = "";
+    displayIssues(data.data);
+}
+
+searchBtn.addEventListener('click', () => {
+    searchResult(searchBox.value)
+})
+
 
 const activeBtn = (btn) => {
 
