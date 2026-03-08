@@ -4,6 +4,7 @@ const totalIssues = document.getElementById("totalIssues")
 const allBtn = document.getElementById("allBtn")
 const openBtn = document.getElementById("openBtn")
 const closedBtn = document.getElementById("closedBtn")
+const loadingSpinner = document.getElementById("loadSpinner")
 
 const activeBtn = (btn) => {
 
@@ -17,8 +18,10 @@ const activeBtn = (btn) => {
 
 // load issues from jason
 async function loadIssues() {
-    const res = await fetch("https://phi-lab-server.vercel.app/api/v1/lab/issues ")
+    loadingSpinner.classList.remove("hidden");
+    const res = await fetch("https://phi-lab-server.vercel.app/api/v1/lab/issues")
     const data = await res.json();
+    loadingSpinner.classList.add("hidden")
 
     // filter loaded data according to btn click
     function handleFilter(type) {
@@ -32,7 +35,7 @@ async function loadIssues() {
         } else {
             filteredIssues = data.data;
         }
-        issuesContainer.innerHTML = " ";
+        issuesContainer.innerHTML = "";
         displayIssues(filteredIssues);
     }
 
