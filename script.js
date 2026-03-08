@@ -1,21 +1,45 @@
 const issuesContainer = document.getElementById("issuesContainer");
 const IssueDetailsModal = document.getElementById("Issue_details_modal")
 const totalIssues = document.getElementById("totalIssues")
-
-
-
+const allBtn = document.getElementById("allBtn")
+const openBtn = document.getElementById("openBtn")
+const closedBtn = document.getElementById("closedBtn")
 
 // load issues from jason
 async function loadIssues() {
     const res = await fetch("https://phi-lab-server.vercel.app/api/v1/lab/issues ")
     const data = await res.json();
-    displayIssues(data.data);
+
+    // filter loaded data according to btn click
+    function handleFilter(type) {
+        let filteredIssues;
+
+        if (type === "closed") {
+            filteredIssues = data.data.filter(i => i.status === "closed");
+
+        } else if (type === "open") {
+            filteredIssues = data.data.filter(i => i.status === "open");
+        } else {
+            filteredIssues = data.data;
+        }
+        issuesContainer.innerHTML = " ";
+        displayIssues(filteredIssues);
+    }
+
+    closedBtn.addEventListener("click", () => handleFilter("closed"));
+    openBtn.addEventListener("click", () => handleFilter("open"));
+    allBtn.addEventListener("click", () => handleFilter("all"));
+
+
+    handleFilter("all");
+
 
 }
 
 function displayIssues(issues) {
     let sum = 0;
     issues.forEach((issue) => {
+
         sum = sum + 1;
         const card = document.createElement("div")
         card.className = "p-4 space-y-3 border-t-4 border-green-500 rounded-lg"
@@ -25,6 +49,7 @@ function displayIssues(issues) {
         else if (issue.status === "closed") {
             card.className = "p-4 space-y-3 border-t-4 border-violet-500 rounded-lg"
         }
+
         card.innerHTML = `
      <div class="flex justify-between">
                     <img src="${issue.status === "open" ? "assets/Open-Status.png" : "assets/Closed- Status .png"}" alt="">
