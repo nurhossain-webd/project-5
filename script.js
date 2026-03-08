@@ -83,7 +83,12 @@ function displayIssues(issues) {
 
         sum = sum + 1;
         const card = document.createElement("div")
-        card.className = "p-4 space-y-3 border-t-4 border-green-500 rounded-lg"
+        card.addEventListener('click', () => {
+            openIssueModal(issue.id)
+        })
+
+
+
         if (issue.status === "open") {
             card.className = "p-4 space-y-3 border-t-4 border-green-500 rounded-lg"
         }
@@ -101,7 +106,7 @@ function displayIssues(issues) {
     ${issue.priority}
   </p>
                 </div>
-                <h2 class="text-lg font-bold" onclick="openIssueModal(${issue.id})">${issue.title}</h2>
+                <h2 class="text-lg font-bold" >${issue.title}</h2>
                 <p class="line-clamp-2 text-sm text-black/60">${issue.description}</p>
                 <div class="flex gap-2 mb-10">
                     <button class="btn btn-outline rounded-2xl  border-2 border-amber-600 bg-amber-600/30 ">
@@ -114,8 +119,8 @@ function displayIssues(issues) {
                    <p class="text-black/60">${issue.assignee}</p> 
                 </div>
                  <div class="flex justify-between">
-                 <p class="text-black/60">${issue.createdAt}</p>
-                 <p class="text-black/60">${issue.updatedAt}</p>
+                 <p class="text-black/60">${new Date(issue.createdAt).toLocaleDateString("en-US")}</p>
+                 <p class="text-black/60">${new Date(issue.updatedAt).toLocaleDateString("en-US")}</p>
                  </div> `
         issuesContainer.appendChild(card);
 
@@ -136,9 +141,9 @@ async function openIssueModal(id) {
       <p class="py-4">
         <span class="bg-green-500 rounded-3xl text-white px-3 py-1">${modalData.status}</span>
         <span class="mx-2 text-gray-400 text-xl">•</span>
-        Opened by ${modalData.assignee}
+        Opened by ${modalData.author}
         <span class="mx-2 text-gray-400 text-xl">•</span>
-        ${modalData.updatedAt}
+        ${new Date(modalData.createdAt).toLocaleDateString("en-US")}
       </p>
 
       <div class="flex flex-wrap gap-2 my-6">
