@@ -5,6 +5,16 @@ const allBtn = document.getElementById("allBtn")
 const openBtn = document.getElementById("openBtn")
 const closedBtn = document.getElementById("closedBtn")
 
+const activeBtn = (btn) => {
+
+    allBtn.classList.remove("btn-primary");
+    openBtn.classList.remove("btn-primary", "btn-soft");
+    closedBtn.classList.remove("btn-primary", "btn-soft");
+    btn.classList.add("btn-primary");
+
+
+}
+
 // load issues from jason
 async function loadIssues() {
     const res = await fetch("https://phi-lab-server.vercel.app/api/v1/lab/issues ")
@@ -26,9 +36,18 @@ async function loadIssues() {
         displayIssues(filteredIssues);
     }
 
-    closedBtn.addEventListener("click", () => handleFilter("closed"));
-    openBtn.addEventListener("click", () => handleFilter("open"));
-    allBtn.addEventListener("click", () => handleFilter("all"));
+    closedBtn.addEventListener("click", () => {
+        activeBtn(closedBtn)
+        handleFilter("closed")
+    });
+    openBtn.addEventListener("click", () => {
+        activeBtn(openBtn)
+        handleFilter("open")
+    });
+    allBtn.addEventListener("click", () => {
+        activeBtn(allBtn)
+        handleFilter("all")
+    });
 
 
     handleFilter("all");
