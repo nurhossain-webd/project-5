@@ -99,7 +99,7 @@ function displayIssues(issues) {
         card.innerHTML = `
      <div class="flex justify-between">
                     <img src="${issue.status === "open" ? "assets/Open-Status.png" : "assets/Closed- Status .png"}" alt="">
-                      <p class="text-lg inline-block px-3 py-1 rounded-full ${issue.priority === "high" ? "bg-red-500/20 text-red-600" :
+                      <p class="uppercase text-lg inline-block px-3 py-1 rounded-full ${issue.priority === "high" ? "bg-red-500/20 text-red-600" :
                 issue.priority === "medium" ? "bg-amber-600/20 text-amber-700" :
                     "bg-green-500/20 text-green-700"
             }">
@@ -109,9 +109,9 @@ function displayIssues(issues) {
                 <h2 class="text-lg font-bold" >${issue.title}</h2>
                 <p class="line-clamp-2 text-sm text-black/60">${issue.description}</p>
                 <div class="flex gap-2 mb-10">
-                    <button class="btn btn-outline rounded-2xl  border-2 border-amber-600 bg-amber-600/30 ">
-                       ${issue.labels[0]}</button>
-                    <button class="btn btn-outline rounded-2xl border-2 border-amber-600 bg-amber-600/30">
+                    <button class="uppercase btn btn-outline rounded-2xl  border-2 border-amber-600 bg-amber-600/30 ">
+                      ${issue.labels[0]}</button>
+                    <button class="uppercase btn btn-outline rounded-2xl border-2 border-amber-600 bg-amber-600/30">
                         ${issue.labels[1]}</button>
                 </div>
                  <div class="flex justify-between">
@@ -138,8 +138,9 @@ async function openIssueModal(id) {
     <div class="modal-box w-11/12 max-w-3xl max-h-[80vh] overflow-y-auto">
       <h3 class="text-lg font-bold">${modalData.title}</h3>
 
-      <p class="py-4">
-        <span class="bg-green-500 rounded-3xl text-white px-3 py-1">${modalData.status}</span>
+     <span class="uppercase ${modalData.status === "open" ? "bg-green-500" : "bg-violet-500"} rounded-3xl text-white px-3 py-1">
+  ${modalData.status}
+</span>
         <span class="mx-2 text-gray-400 text-xl">•</span>
         Opened by ${modalData.author}
         <span class="mx-2 text-gray-400 text-xl">•</span>
@@ -159,7 +160,7 @@ async function openIssueModal(id) {
       <div class="space-y-2">
         <div class="flex justify-between w-8/12">
           <p class="text-black/60">Assignee:</p>
-          <p class="text-black/60">Prior</p>
+          <p class="text-black/60">Priority</p>
         </div>
 
         <div class="flex justify-between w-8/12">
