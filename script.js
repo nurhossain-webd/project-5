@@ -109,9 +109,9 @@ function displayIssues(issues) {
                 <h2 class="text-lg font-bold" >${issue.title}</h2>
                 <p class="line-clamp-2 text-sm text-black/60">${issue.description}</p>
                 <div class="flex gap-2 mb-10">
-                    <button class="uppercase btn btn-outline rounded-2xl  border-2 border-amber-600 bg-amber-600/30 ">
+                    <button class="uppercase text-xs btn btn-outline rounded-2xl  border-2 border-amber-600 bg-amber-600/30 ">
                       ${issue.labels[0]}</button>
-                    <button class="uppercase btn btn-outline rounded-2xl border-2 border-amber-600 bg-amber-600/30">
+                    <button class="uppercase text-xs btn btn-outline rounded-2xl border-2 border-amber-600 bg-amber-600/30">
                         ${issue.labels[1]}</button>
                 </div>
                  <div class="flex justify-between">
